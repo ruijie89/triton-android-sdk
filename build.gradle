@@ -13,6 +13,8 @@ allprojects {
 }
 
 buildscript {
+    ext.jfrog_version = '4.9.6'
+
     repositories {
         jcenter()
         mavenCentral()
@@ -21,6 +23,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:$jfrog_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -171,4 +174,7 @@ def packageFiles = fileTree(dir: 'generated', includes: ['docs/**', 'libs/**', '
 task pack(type: Zip) {
   archiveName = "generated/${tritonSdkPackage}.zip"
   from packageFiles
+}
+
+task publishAar(dependsOn: ['sdk', ':tdsdk:artifactoryPublish']) {
 }

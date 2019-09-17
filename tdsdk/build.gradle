@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'com.jfrog.artifactory'
+apply plugin: 'maven-publish'
 
 
 android {
@@ -32,3 +33,5 @@ clean {
     include '*.aar', '*.jar'
   }
 }
+
+apply from: "${projectDir}/gradle/artifactory.gradle"
