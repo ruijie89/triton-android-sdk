@@ -11,6 +11,8 @@
 
 /**/*.iml
 
+/local.properties
+
 tdsdk/libs/*.aar
 tdsdk/libs/*.jar
 tdsdk/docs/html
