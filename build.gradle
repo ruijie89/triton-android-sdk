@@ -175,6 +175,3 @@ task pack(type: Zip) {
   archiveName = "generated/${tritonSdkPackage}.zip"
   from packageFiles
 }
-
-task publishAar(dependsOn: ['sdk', ':tdsdk:artifactoryPublish']) {
-}

@@ -41,7 +41,7 @@ dependencies {
 task SdkUtilVersion {
     version = rootProject.ext.tritonSDKVersion
     logger.info("Create SdkUtil.java with version : ${version}")
-    def file = new File("util/src/main/java/com/tritondigital/util/SdkUtil.java")
+    def file = new File("${rootDir}/util/src/main/java/com/tritondigital/util/SdkUtil.java")
     file.createNewFile()
     file.text = """//Auto-generated file. Do not edit.
     package com.tritondigital.util;
