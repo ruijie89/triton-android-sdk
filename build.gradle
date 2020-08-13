@@ -99,7 +99,7 @@ task sampleLibs(type: Copy, dependsOn: 'sampleTemplate') {
 task sampleProperties (dependsOn: 'sampleTemplate') {
     doLast {
       def version = rootProject.ext.tritonSDKVersion
-      logger.info("Create saple gradle.properties")
+      logger.info("Create sample gradle.properties")
       def file = new File("generated/sample/gradle.properties")
       file.createNewFile()
       file.text = "TRITON_SDK = ${rootProject.ext.tritonSdkPackage}"
