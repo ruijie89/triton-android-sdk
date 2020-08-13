@@ -13,12 +13,16 @@ android {
         project.archivesBaseName = "triton-android-sdk"
     }
 
-    libraryVariants.all { variant ->
-        variant.outputs.each { output ->
-            def outputFile = output.outputFile
-            if (outputFile != null && outputFile.name.endsWith('.aar')) {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    android.libraryVariants.all { variant ->
+        variant.outputs.all { output ->
+            if (outputFileName.endsWith('.aar')) {
                 def fileName = "${archivesBaseName}-${tritonSDKVersion}.aar"
-                output.outputFileName = new File(".", fileName)
+                outputFileName = fileName
             }
         }
     }
