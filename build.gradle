@@ -55,6 +55,7 @@ allprojects {
             flatDir {
             dirs 'libs'
         }
+        google()
     }
 }
 
@@ -101,8 +102,9 @@ task sampleProperties (dependsOn: 'sampleTemplate') {
       def version = rootProject.ext.tritonSDKVersion
       logger.info("Create sample gradle.properties")
       def file = new File("generated/sample/gradle.properties")
+        List<String> sample = [ "TRITON_SDK = ${rootProject.ext.tritonSdkPackage}","android.useAndroidX=true","android.enableJetifier=true" ] as String[]
       file.createNewFile()
-      file.text = "TRITON_SDK = ${rootProject.ext.tritonSdkPackage}"
+      file.text = sample.join ("\n")
     }
 }
 
@@ -172,6 +174,7 @@ task androidTest {
 def packageFiles = fileTree(dir: 'generated', includes: ['docs/**', 'libs/**', 'sample/**','version.properties','CHANGELOG.txt'], excludes: ['**/build/**', '**/.gradle/**'])
 
 task pack(type: Zip) {
-  archiveName = "generated/${tritonSdkPackage}.zip"
+    archiveFileName = "${tritonSdkPackage}.zip"
+    destinationDirectory = file("generated")
   from packageFiles
 }

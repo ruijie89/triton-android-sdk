@@ -26,10 +26,16 @@ android {
             }
         }
     }
+
+    /*libraryVariants.all { variant ->
+        variant.outputs.all { output ->
+            outputFileName = "${archivesBaseName}-${tritonSDKVersion}.aar"
+        }
+    }*/
 }
 
 dependencies {
-  compile fileTree(include: ['*.jar'], dir: 'libs')
+  implementation fileTree(include: ['*.jar'], dir: 'libs')
 }
 
 clean {
