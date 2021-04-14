@@ -18,20 +18,11 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    android.libraryVariants.all { variant ->
-        variant.outputs.all { output ->
-            if (outputFileName.endsWith('.aar')) {
-                def fileName = "${archivesBaseName}-${tritonSDKVersion}.aar"
-                outputFileName = fileName
-            }
-        }
-    }
-
-    /*libraryVariants.all { variant ->
+    libraryVariants.all { variant ->
         variant.outputs.all { output ->
             outputFileName = "${archivesBaseName}-${tritonSDKVersion}.aar"
         }
-    }*/
+    }
 }
 
 dependencies {
